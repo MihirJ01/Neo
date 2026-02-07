@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP32 Servo Joystick</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
+    input[type=range] {
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <h2>SG90 Servo Test</h2>
+  <p>Angle: <span id="val">90</span>°</p>
+  <input type="range" min="0" max="180" value="90"
+         oninput="update(this.value)">
+<script>
+function update(v) {
+  document.getElementById("val").innerHTML = v;
+  fetch("/set?angle=" + v);
+}
+</script>
+</body>
+</html>
